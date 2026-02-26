@@ -1,0 +1,46 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.filters {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.generate-btn {
+    height: 54px;
+    padding: 0 24px;
+}
+
+.report-tabs {
+    margin-top: 24px;
+}
+
+.full-width-table {
+    width: 100%;
+}
+
+.no-data {
+    padding: 40px;
+    text-align: center;
+    color: #999;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}

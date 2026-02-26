@@ -1,0 +1,73 @@
+<div class="adjustment-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Manual Stock Adjustment</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="adjustmentForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>Branch</mat-label>
+                        <mat-select formControlName="branchId">
+                            <mat-option *ngFor="let b of branches" [value]="b.id">{{b.name}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="adjustmentForm.get('branchId')?.hasError('required')">Branch is
+                            required</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>Search Product</mat-label>
+                        <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+                            (optionSelected)="onProductSelected($event.option.value)">
+                            <mat-option *ngFor="let p of filteredProducts | async" [value]="p">
+                                {{p.name}} <small>({{p.sku}})</small>
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+
+                <div class="stock-preview" *ngIf="currentStock !== null">
+                    <mat-icon [color]="currentStock > 0 ? 'primary' : 'warn'">inventory</mat-icon>
+                    <span>Current Stock at selected branch: <strong>{{currentStock}}</strong></span>
+                </div>
+
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Adjustment Quantity</mat-label>
+                        <input matInput type="number" formControlName="quantity"
+                            placeholder="e.g. 10 to add, -5 to reduce">
+                        <mat-hint>Enter positive to increase, negative to reduce</mat-hint>
+                        <mat-error *ngIf="adjustmentForm.get('quantity')?.hasError('required')">Quantity is
+                            required</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Reference/Ticket Number</mat-label>
+                        <input matInput formControlName="referenceNumber" placeholder="e.g. ADJ-001 or Return ID">
+                    </mat-form-field>
+                </div>
+
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Remarks / Reason</mat-label>
+                        <textarea matInput formControlName="remarks" rows="3"
+                            placeholder="Explain why this adjustment is being made..."></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-actions">
+                    <button mat-button type="button" routerLink="/inventory">Cancel</button>
+                    <button mat-raised-button color="primary" type="submit"
+                        [disabled]="adjustmentForm.invalid || loading">
+                        <mat-icon *ngIf="!loading">save</mat-icon>
+                        <span *ngIf="loading">Processing...</span>
+                        <span *ngIf="!loading">Save Adjustment</span>
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

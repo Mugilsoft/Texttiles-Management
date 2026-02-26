@@ -1,0 +1,38 @@
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* Slightly tighter rows */
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.form-row mat-form-field,
+.toggle-container {
+  flex: 1;
+  width: 50%;
+  /* Force two equal columns */
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  height: 60px;
+  /* Match form field height */
+}
+
+mat-dialog-content {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-top: 10px !important;
+}
+
+.status-row {
+  padding: 10px 0;
+}

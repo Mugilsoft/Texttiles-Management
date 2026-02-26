@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Edit Counter' : 'Add New Counter' }}</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="counterForm" (ngSubmit)="onSave()">
+        <div class="form-field">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Branch</mat-label>
+                <mat-select formControlName="branchId">
+                    <mat-option *ngFor="let b of branches" [value]="b.id">{{b.name}} ({{b.code}})</mat-option>
+                </mat-select>
+                <mat-error *ngIf="counterForm.get('branchId')?.hasError('required')">Branch is required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Counter Name</mat-label>
+                <input matInput formControlName="name" placeholder="Billing Counter 1">
+                <mat-error *ngIf="counterForm.get('name')?.hasError('required')">Name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Counter Code</mat-label>
+                <input matInput formControlName="code" placeholder="C-001">
+                <mat-error *ngIf="counterForm.get('code')?.hasError('required')">Code is required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-field status-field">
+            <mat-slide-toggle formControlName="isActive" color="primary">Active</mat-slide-toggle>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="counterForm.invalid" (click)="onSave()">
+        {{ isEdit ? 'Update' : 'Create' }}
+    </button>
+</mat-dialog-actions>

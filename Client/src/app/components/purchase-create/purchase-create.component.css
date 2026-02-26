@@ -1,0 +1,107 @@
+.create-container {
+    padding: 24px;
+}
+
+mat-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.third-width {
+    flex: 1;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.item-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.product-select {
+    flex: 3;
+}
+
+.qty-input {
+    flex: 1;
+}
+
+.price-input {
+    flex: 1.5;
+}
+
+.tax-input {
+    flex: 1;
+}
+
+.subtotal-display {
+    flex: 1.5;
+    text-align: right;
+    padding-right: 12px;
+}
+
+.subtotal-display label {
+    font-size: 0.75rem;
+    color: #64748b;
+    display: block;
+}
+
+.subtotal-display div {
+    font-weight: 500;
+    color: #1e3c72;
+}
+
+.add-button {
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+.summary-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-top: 2px solid #e2e8f0;
+    margin-top: 24px;
+}
+
+.total-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.total-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e3c72;
+}
+
+.footer-remarks {
+    margin-top: 24px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+h1 {
+    margin: 0;
+    color: #1e3c72;
+}

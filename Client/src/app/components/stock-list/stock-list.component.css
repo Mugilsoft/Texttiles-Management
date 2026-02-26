@@ -1,0 +1,47 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.branch-selector {
+    width: 250px;
+}
+
+.full-width-table {
+    width: 100%;
+}
+
+.status-chip {
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-chip.primary {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-chip.accent {
+    background-color: #fff3e0;
+    color: #ef6c00;
+}
+
+.status-chip.warn {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+h1 {
+    margin: 0;
+    color: #1e3c72;
+}

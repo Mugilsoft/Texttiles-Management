@@ -1,0 +1,88 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Edit' : 'Add' }} Product</h2>
+<mat-dialog-content>
+  <form [formGroup]="productForm" class="product-form">
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Product Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="productForm.get('name')?.hasError('required')">Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="categoryId">
+          <mat-option *ngFor="let cat of categories" [value]="cat.id">
+            {{cat.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="productForm.get('categoryId')?.hasError('required')">Required</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>SKU</mat-label>
+        <input matInput formControlName="sku">
+        <mat-error *ngIf="productForm.get('sku')?.hasError('required')">Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Barcode</mat-label>
+        <input matInput formControlName="barcode">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Size</mat-label>
+        <input matInput formControlName="size">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Color</mat-label>
+        <input matInput formControlName="color">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Fabric</mat-label>
+        <input matInput formControlName="fabric">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Tax Percentage (%)</mat-label>
+        <input matInput type="number" formControlName="taxPercentage">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Purchase Price</mat-label>
+        <input matInput type="number" formControlName="purchasePrice">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Sale Price</mat-label>
+        <input matInput type="number" formControlName="salePrice">
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>MRP</mat-label>
+        <input matInput type="number" formControlName="mrp">
+      </mat-form-field>
+
+      <div class="toggle-container">
+        <mat-slide-toggle formControlName="isActive" color="primary">
+          Product Active Status
+        </mat-slide-toggle>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="productForm.invalid" (click)="CreateProduct()">Save</button>
+</mat-dialog-actions>

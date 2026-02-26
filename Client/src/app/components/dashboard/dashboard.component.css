@@ -1,0 +1,34 @@
+.dashboard-container {
+    padding: 10px;
+}
+
+h1 {
+    margin-bottom: 24px;
+    color: #1e3c72;
+}
+
+.stat-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.stat-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+}
+
+.welcome-section {
+    margin-top: 30px;
+}
+
+.welcome-section h2 {
+    color: #1e3c72;
+}

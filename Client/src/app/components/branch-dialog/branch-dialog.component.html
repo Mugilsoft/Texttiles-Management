@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Edit Branch' : 'Add New Branch' }}</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="branchForm" (ngSubmit)="onSave()">
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Branch Name</mat-label>
+                <input matInput formControlName="name" placeholder="Enter branch name">
+                <mat-error *ngIf="branchForm.get('name')?.hasError('required')">Name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Branch Code</mat-label>
+                <input matInput formControlName="code" placeholder="BR-001">
+                <mat-error *ngIf="branchForm.get('code')?.hasError('required')">Code is required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-field">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Address</mat-label>
+                <textarea matInput formControlName="address" rows="2" placeholder="Enter full address"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="form-field">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Phone Number</mat-label>
+                <input matInput formControlName="phone" placeholder="Contact number">
+            </mat-form-field>
+        </div>
+
+        <div class="form-field status-field">
+            <mat-slide-toggle formControlName="isActive" color="primary">Active</mat-slide-toggle>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="branchForm.invalid" (click)="onSave()">
+        {{ isEdit ? 'Update' : 'Create' }}
+    </button>
+</mat-dialog-actions>

@@ -1,0 +1,97 @@
+<div class="create-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>New Purchase Order</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="purchaseForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="third-width">
+                        <mat-label>Vendor</mat-label>
+                        <mat-select formControlName="vendorId">
+                            <mat-option *ngFor="let v of vendors" [value]="v.id">{{v.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="third-width">
+                        <mat-label>Branch</mat-label>
+                        <mat-select formControlName="branchId">
+                            <mat-option *ngFor="let b of branches" [value]="b.id">{{b.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="third-width">
+                        <mat-label>Date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="poDate">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <h3>Items</h3>
+                <div formArrayName="items">
+                    <div *ngFor="let item of items.controls; let i=index" [formGroupName]="i" class="item-row">
+                        <mat-form-field appearance="outline" class="product-select">
+                            <mat-label>Product</mat-label>
+                            <mat-select formControlName="productId">
+                                <mat-option *ngFor="let p of products" [value]="p.id">{{p.name}}
+                                    ({{p.sku}})</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="qty-input">
+                            <mat-label>Qty</mat-label>
+                            <input matInput type="number" formControlName="quantity" (change)="calculateItem(i)">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="price-input">
+                            <mat-label>Unit Price</mat-label>
+                            <input matInput type="number" formControlName="unitPrice" (change)="calculateItem(i)">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="tax-input">
+                            <mat-label>Tax %</mat-label>
+                            <input matInput type="number" formControlName="taxPercentage" (change)="calculateItem(i)">
+                        </mat-form-field>
+
+                        <div class="subtotal-display">
+                            <label>Subtotal</label>
+                            <div>{{item.get('subTotal')?.value | currency:'INR'}}</div>
+                        </div>
+
+                        <button mat-icon-button color="warn" type="button" (click)="removeItem(i)"
+                            *ngIf="items.length > 1">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <button mat-stroked-button color="primary" type="button" (click)="addItem()" class="add-button">
+                    <mat-icon>add</mat-icon> Add Item
+                </button>
+
+                <div class="summary-section">
+                    <div class="total-label">Grand Total:</div>
+                    <div class="total-value">{{getTotal() | currency:'INR'}}</div>
+                </div>
+
+                <div class="form-row footer-remarks">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Remarks</mat-label>
+                        <textarea matInput formControlName="remarks" rows="2"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-actions">
+                    <button mat-button type="button" routerLink="/purchases">Cancel</button>
+                    <button mat-raised-button color="primary" type="submit"
+                        [disabled]="purchaseForm.invalid || loading">
+                        <mat-icon *ngIf="!loading">save</mat-icon>
+                        <span *ngIf="loading">Creating PO...</span>
+                        <span *ngIf="!loading">Save Purchase Order</span>
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

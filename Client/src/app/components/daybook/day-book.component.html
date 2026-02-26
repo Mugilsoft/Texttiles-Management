@@ -1,0 +1,81 @@
+<div class="header-container">
+    <h1>Day Book Summary</h1>
+    <div class="filters">
+        <mat-form-field appearance="outline" class="date-picker">
+            <mat-label>Select Date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" (dateChange)="onFilterChange()">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="branch-selector">
+            <mat-label>Branch</mat-label>
+            <mat-select [(ngModel)]="selectedBranch" (selectionChange)="onFilterChange()">
+                <mat-option [value]="null">All Branches</mat-option>
+                <mat-option *ngFor="let branch of branches" [value]="branch.id">{{branch.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+
+<div *ngIf="dayBook" class="summary-cards">
+    <mat-card class="summary-card sales">
+        <mat-card-header>
+            <mat-card-title>Total Sales</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="amount">{{dayBook.totalSales | currency:'INR'}}</div>
+            <div class="sub-text">Tax Collected: {{dayBook.totalTaxCollected | currency:'INR'}}</div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="summary-card purchase">
+        <mat-card-header>
+            <mat-card-title>Total Purchases</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="amount">{{dayBook.totalPurchases | currency:'INR'}}</div>
+            <div class="sub-text">Tax Paid: {{dayBook.totalTaxPaid | currency:'INR'}}</div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="summary-card net" [ngClass]="dayBook.netCashFlow >= 0 ? 'positive' : 'negative'">
+        <mat-card-header>
+            <mat-card-title>Net Cash Flow</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="amount">{{dayBook.netCashFlow | currency:'INR'}}</div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<div class="details-container" *ngIf="dayBook">
+    <mat-card class="payment-summary">
+        <mat-card-header>
+            <mat-card-title>Sales Breakdown by Payment Mode</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Mode</th>
+                        <th class="text-right">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of dayBook.salesByPaymentMode">
+                        <td>{{item.paymentMode}}</td>
+                        <td class="text-right">{{item.amount | currency:'INR'}}</td>
+                    </tr>
+                    <tr *ngIf="dayBook.salesByPaymentMode.length === 0">
+                        <td colspan="2" class="text-center">No transactions for this date.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<div *ngIf="loading" class="loading-overlay">
+    Processing...
+</div>
