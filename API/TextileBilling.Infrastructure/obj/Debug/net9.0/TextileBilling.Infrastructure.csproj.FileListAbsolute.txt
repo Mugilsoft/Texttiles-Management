@@ -1,0 +1,17 @@
+D:\Text Tails\src\TextileBilling.Infrastructure\bin\Debug\net9.0\TextileBilling.Infrastructure.deps.json
+D:\Text Tails\src\TextileBilling.Infrastructure\bin\Debug\net9.0\TextileBilling.Infrastructure.runtimeconfig.json
+D:\Text Tails\src\TextileBilling.Infrastructure\bin\Debug\net9.0\TextileBilling.Infrastructure.dll
+D:\Text Tails\src\TextileBilling.Infrastructure\bin\Debug\net9.0\TextileBilling.Infrastructure.pdb
+D:\Text Tails\src\TextileBilling.Infrastructure\bin\Debug\net9.0\TextileBilling.Core.dll
+D:\Text Tails\src\TextileBilling.Infrastructure\bin\Debug\net9.0\TextileBilling.Core.pdb
+D:\Text Tails\src\TextileBilling.Infrastructure\obj\Debug\net9.0\TextileBilling.Infrastructure.csproj.AssemblyReference.cache
+D:\Text Tails\src\TextileBilling.Infrastructure\obj\Debug\net9.0\TextileBilling.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Text Tails\src\TextileBilling.Infrastructure\obj\Debug\net9.0\TextileBilling.Infrastructure.AssemblyInfoInputs.cache
+D:\Text Tails\src\TextileBilling.Infrastructure\obj\Debug\net9.0\TextileBilling.Infrastructure.AssemblyInfo.cs
+D:\Text Tails\src\TextileBilling.Infrastructure\obj\Debug\net9.0\TextileBilling.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Text Tails\src\TextileBilling.Infrastructure\obj\Debug\net9.0\TextileB.A506FC83.Up2Date
+D:\Text Tails\src\TextileBilling.Infrastructure\obj\Debug\net9.0\TextileBilling.Infrastructure.dll
+D:\Text Tails\src\TextileBilling.Infrastructure\obj\Debug\net9.0\refint\TextileBilling.Infrastructure.dll
+D:\Text Tails\src\TextileBilling.Infrastructure\obj\Debug\net9.0\TextileBilling.Infrastructure.pdb
+D:\Text Tails\src\TextileBilling.Infrastructure\obj\Debug\net9.0\TextileBilling.Infrastructure.genruntimeconfig.cache
+D:\Text Tails\src\TextileBilling.Infrastructure\obj\Debug\net9.0\ref\TextileBilling.Infrastructure.dll
