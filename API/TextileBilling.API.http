@@ -1,0 +1,6 @@
+@TextileBilling.API_HostAddress = http://localhost:5003
+
+GET {{TextileBilling.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
